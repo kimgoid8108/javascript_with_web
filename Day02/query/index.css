@@ -1,0 +1,14 @@
+.myButton {
+  padding: 2px, 4px;
+  border: none;
+  background-color: pink;
+  border-radius: 4px;
+}
+
+.overFive {
+  background-color: blue;
+}
+
+.down {
+  background-color: gray;
+}
