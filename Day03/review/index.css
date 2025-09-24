@@ -1,0 +1,18 @@
+article {
+  display: flex;
+  flex-direction: column;
+}
+
+article > nav {
+  background-color: #efefef;
+  padding: 16px;
+}
+
+article > nav > ul {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+article > section {
+}
