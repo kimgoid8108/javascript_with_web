@@ -19,6 +19,7 @@ header {
 header > img {
   width: 128px;
   height: auto;
+  cursor: pointer;
 }
 
 header > div {
@@ -99,7 +100,7 @@ section > #textbox > p {
 #close {
   border: none;
   background-color: #262f3c;
-  font-size: 30px;
+  font-size: 50px;
   color: white;
   cursor: pointer;
   position: absolute;
@@ -113,4 +114,5 @@ section > #textbox > p {
   color: #99a1b1;
   padding: 66px;
   line-height: 50px;
+  font-size: 20px;
 }
