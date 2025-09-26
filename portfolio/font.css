@@ -1,0 +1,40 @@
+/* 폰트 css */
+@font-face {
+  font-family: "Paperozi";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NostalgicDesertYeonwoo";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2508-2@1.0/Griun_YEONWOO-Rg.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "KotraBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff")
+    format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GangwonEducationTteontteon";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GangwonEducationModuche";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFLightA.woff")
+    format("woff");
+  font-weight: 300;
+  font-display: swap;
+}

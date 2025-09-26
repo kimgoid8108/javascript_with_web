@@ -27,7 +27,6 @@ const closeMenu = document.querySelector("#close");
 menuBtn.addEventListener("click", () => {
   screen.classList.toggle("show");
   screen.classList.toggle("hidden");
-  secreen.style.backgroundColor = "black";
   opacity = "0.7";
 });
 

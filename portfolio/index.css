@@ -1,0 +1,312 @@
+/* ---------------------------------------- */
+body {
+  background: url("../portfolio/image/bg-shadow.jpg") no-repeat right bottom /
+    cover fixed;
+  z-index: -1;
+}
+
+/* 로딩 화면 css
+-------------------------------------------- */
+
+/* 메뉴 버튼 css 
+---------------------------------------------*/
+
+.menu-btn1,
+.menu-btn2 {
+  height: 64px;
+  width: 64px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  font-size: 20px;
+  border-radius: 9999px;
+  border: 1px solid;
+  padding: 8px 16px;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  z-index: 999;
+}
+
+.menu-btn1 {
+  transition: all 0.3s;
+}
+
+.menu-btn1:hover {
+  background-color: #d5edeb;
+}
+
+.menu-btn2 {
+  color: white;
+  border: 2px solid white;
+  transition: all 0.3s;
+}
+
+.menu-btn2:hover {
+  background-color: #d5edeb;
+}
+
+.box {
+  z-index: 1000;
+  position: fixed;
+  width: 600px;
+  height: 100vh;
+  background-color: #403632;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: all 0.3s;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  padding: 150px 100px;
+  line-height: 3;
+  font-size: 50px;
+  color: #d5edeb;
+  text-align: center;
+}
+
+.menu-list > li {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.menu-list > li:hover {
+  color: #63dbd0;
+}
+
+.hidden {
+  transform: translateX(100%);
+}
+.show {
+  transform: translateX(0);
+}
+
+/* 스와이프 섹션 css 
+---------------------------------------------*/
+.swiper {
+  height: 100vh;
+}
+
+.swiper-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+/* 화면사진 및 텍스트 섹션 css 
+---------------------------------------------*/
+
+/* first 섹션 css 
+---------------------------------------------*/
+.first {
+  height: 100vh;
+  position: relative;
+}
+
+.first::after {
+  content: "";
+  width: 50%;
+  height: 100vh;
+  background: url("../portfolio/image/bg-hero.jpg") no-repeat center / cover;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.first > .title {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  font-size: 200px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #403632;
+  line-height: 1.2;
+  font-family: "GangwonEducationTteontteon";
+}
+
+/* second 섹션 css 
+---------------------------------------------*/
+.second {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "GangwonEducationTteontteon";
+}
+
+.second::after {
+  content: "";
+  position: absolute;
+  top: 57.5%;
+  right: 0;
+  width: 610px;
+  height: 810px;
+  background: url("../portfolio/image/second.jpg") no-repeat center / cover;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.concept {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.first-title {
+  width: 576px;
+  height: 108px;
+  font-size: 64px;
+  margin: 0px 0px 48px;
+  text-align: center;
+  transform: translate(-55%, 80%);
+  color: #403632;
+}
+
+.second-title {
+  width: 576px;
+  height: 108px;
+  font-size: 18px;
+  margin: 0px 0px 32px;
+  line-height: 1.7;
+  transform: translate(-55%, 70%);
+  font-family: "GangwonEducationModuche";
+}
+
+.text-box {
+  position: absolute;
+  width: 1000px;
+  height: 618px;
+  background-color: #eee;
+  z-index: -1;
+
+  transform: translate(-7%, 12%);
+}
+
+/* third 섹션 css 
+---------------------------------------------*/
+.gallery {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.gallery > .gallery-image {
+  width: 100%;
+  max-width: 900px;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+
+.gallery-pictures {
+  display: flex;
+  flex-direction: column;
+
+  display: flex;
+  text-align: center;
+  font-size: 64px;
+  font-family: "GangwonEducationTteontteon";
+  padding: 50px 300px;
+}
+h2 {
+  margin-bottom: 48px;
+}
+
+#thumbnails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery-pictures li img {
+  width: 156px;
+  height: 210px;
+  object-fit: cover;
+}
+/* fourth 섹션 css 
+---------------------------------------------*/
+
+.shop {
+  width: 100%;
+  max-width: 608px;
+  height: 560px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translate(105%, 5%);
+  padding: 48px;
+
+  position: relative;
+  z-index: 1;
+}
+
+.shop-title {
+  position: absolute;
+  font-size: 64px;
+  margin-bottom: 48px;
+  top: 48px;
+}
+
+.shop-detail {
+  line-height: 1.7;
+  padding: 100px 0px 0px;
+}
+
+.shopBtn {
+  padding: 16px;
+  margin: 32px 0px;
+  color: white;
+  background-color: #403632;
+  border: 1px solid;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.shopBtn:hover {
+  background-color: #d5edeb;
+  color: black;
+}
+
+.shop-franchise {
+  margin: 16px 0px;
+  padding-top: 32px;
+  border-top: 1px solid #eee;
+  height: 50px;
+  font-size: 18px;
+}
+
+.shop-time {
+  padding-top: 32px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.last-img {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
