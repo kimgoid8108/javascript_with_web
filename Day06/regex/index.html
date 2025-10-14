@@ -4,15 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="index2.js" defer></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="index5.js" defer></script>
   </head>
-  <body>
-    <textarea id="news" placeholder="뉴스 기사 입력" name="" id=""></textarea>
-    <input id="words" type="text" placeholder="찾고 싶은 단어" />
-    <div>포함여부: <span id="hasWord">없음</span></div>
-    <div>단어갯수: <span id="count"></span></div>
+  <body
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 480px;
+    "
+  >
+    <h2 style="font-size: 30px">회원가입</h2>
+    <span style="position: relative; padding-bottom: 20px"
+      >회원가입 정보를 <br />입력해주세요👀</span
+    >
+    <input id="nickname" type="text" placeholder="아이디를 입력해 주세요" />
+    <span style="color: #999" id="nickEN"
+      ><i class="ri-check-line"></i>영문/숫자</span
+    >
+    <span style="color: #999; padding-bottom: 20px" id="nickL"
+      ><i class="ri-check-line"></i>6~20자 내외</span
+    >
 
-    <!-- <div>해당 단어 포함 여부: 있음 or 없음</div> -->
-    <!--단어갯수도: -->
+    <input id="password" type="text" placeholder="비밀번호를 입력해 주세요" />
+    <div
+      box1
+      style="
+        display: flex;
+        flex-direction: row;
+        font-size: 15px;
+        color: #999;
+        padding-bottom: 20px;
+      "
+    >
+      <span id="pwE"><i class="ri-check-line"></i>영문</span>
+      <span id="pwN"><i class="ri-check-line"></i>숫자</span>
+      <span id="pwS"><i class="ri-check-line"></i>특수문자(!@#$%^&*-_+)</span>
+      <span id="pwL"><i class="ri-check-line"></i>8~20자 내외</span>
+    </div>
+
+    <input id="email" type="text" placeholder="이메일을 입력해 주세요" />
+    <span style="color: #999" id="emailL"
+      ><i class="ri-check-line"></i>이메일 형식</span
+    >
+
+    <button id="btn" disabled>가입</button>
   </body>
 </html>
