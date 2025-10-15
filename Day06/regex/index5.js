@@ -1,32 +1,15 @@
-// 아이디 입력
-const nickname = document.querySelector("#nickname");
-const nickEN = document.querySelector("#nickEN");
-const nickL = document.querySelector("#nickL");
-
-// 비밀번호 입력
-const password = document.querySelector("#password");
-const pwE = document.querySelector("#pwE");
-const pwN = document.querySelector("#pwN");
-const pwS = document.querySelector("#pwS");
-const pwL = document.querySelector("#pwL");
-
-// 이메일 입력
-const email = document.querySelector("#email");
-const emailL = document.querySelector("#emailL");
-
-// 버튼 활성화
-const btn = document.querySelector("#btn");
-
 //정규식
 const regex_nickEN = /^[a-zA-Z0-9]+$/;
 const regex_nickL = /^.{6,20}$/;
-const regex_pwE = /[a-zA-Z]/;
-const regex_pwN = /[0-9]/;
-const regex_pwS = /[!@#$%^&*-_]/;
-const regex_pwL = /^.{8,20}$/;
-const regex_emailL = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-// 아이디 입력----------------------------
+const regex_pwE = /[a-zA-Z]+/;
+const regex_pwN = /[0-9]+/;
+const regex_pwS = /[!@$%^*_+~]+/;
+const regex_pwL = /^.{8,20}$/;
+
+const regex_emailL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// 아이디 입력-----------------------------
 nickname.addEventListener("input", () => {
   const { value } = nickname;
 
