@@ -1,6 +1,7 @@
 const input = document.querySelector("#input");
 const save = document.querySelector("#save");
 const load = document.querySelector("#load");
+const candy = document.querySelector("#candy");
 
 save.addEventListener("click", () => {
   if (localStorage.getItem("사탕리스트")) {
@@ -14,5 +15,5 @@ save.addEventListener("click", () => {
 
 load.addEventListener("click", () => {
   const candyList = localStorage.getItem("사탕리스트");
-  console.log(candyList);
+  candy.innerHTML = candyList;
 });
