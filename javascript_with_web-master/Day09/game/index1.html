@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>좌우 회전 RPG</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: url("https://cdn.pixabay.com/photo/2017/03/30/12/08/fantasy-2186371_1280.jpg")
+          center/cover no-repeat;
+      }
+
+      #hero-name {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: yellow;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="hero">
+      <div id="hero-name"><img src="hero.png" alt="" /></div>
+    </div>
+  </body>
+</html>

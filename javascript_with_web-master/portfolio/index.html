@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <script src="js/loading.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/swipe.js" defer></script>
+    <script src="js/lookbook.js" defer></script>
+    <script src="js/title.js" defer></script>
+    
+  </head>
+  <body>
+    <div id="loading">
+      <p id="loading-text">Loading...</p>
+      <div id="loading-screen"></div>
+    </div>
+    
+    <nav>
+      <button id="open-menu" class="menu-btn1">
+        <i class="ri-menu-line"></i>
+      </button>
+      <div id="menu-bar" class="box hidden">
+        <button id="close-menu" class="menu-btn2">
+          <i class="ri-close-large-line"></i>
+        </button>
+        <ul class="menu-list">
+          <li data-target=".first">Main</li>
+          <li data-target=".second">Concept</li>
+          <li data-target=".gallery">Lookbook</li>
+          <li data-target=".Last">Fourth</li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="swiper">
+      <div class="swiper-wrapper">
+     
+        <div class="swiper-slide first">
+          <h1 class="title">WCB Fashion<br />Collection</h1>
+        </div>
+
+ 
+        <div class="swiper-slide second">
+          <h2 id="first-text" class="first-title">Concept</h2>
+          <p id="second-text" class="second-title">
+            매일 당연했던 날들을 아주 조금 화려하게 꾸미고 싶다는 생각으로부터
+            새로운 패션 브랜드가 생겨났습니다. 가볍고 부드러우며 착용감이 좋은
+            소재를 베이스로 하여 어떤 순간에도 부드러운 미소로 지낼 수 있을
+            거예요. WCB Fashion Collection에서 '당신다움'을 함께 찾아보시겠어요?
+          </p>
+        <div class="text-box"></div>
+        </div>
+        
+
+        <div class="swiper-slide gallery">
+          <div class="gallery-image">
+            <img src="image/gallery1.jpg" alt="" />
+          </div>
+          <div class="gallery-pictures wrapper">
+            <h2>Lookbook</h2>
+            <ul id="thumbnails">
+              <li><img src="image/gallery1.jpg" alt="" /></li>
+              <li><img src="image/gallery2.jpg" alt="" /></li>
+              <li><img src="image/gallery3.jpg" alt="" /></li>
+              <li><img src="image/gallery4.jpg" alt="" /></li>
+              <li><img src="image/gallery5.jpg" alt="" /></li>
+              <li><img src="image/gallery6.jpg" alt="" /></li>
+              <li><img src="image/gallery7.jpg" alt="" /></li>
+              <li><img src="image/gallery8.jpg" alt="" /></li>
+              <li><img src="image/gallery9.jpg" alt="" /></li>
+            </ul>
+          </div>
+        </div>
+        <div class="swiper-slide Last">
+          <div class="shop wrapper">
+            <h2 class="shop-title">Shop</h2>
+            <p class="shop-detail">언제나 무료 배송. 편리한 온라인 샵을 이용해주세요</p>
+            <a class="shopBtn" href="">온라인 샵</a>
+
+            <h3 class="shop-franchise">롯폰기점</h3>
+            <p class="shop-time">
+              도쿄도 미나토구 롯폰기2-4-5 <br>
+              영업일：금・토・일・휴일<br>
+              영업시간：11:00〜18:00
+            </p>
+          </div>
+          <img class="last-img" src="image/lastimg.jpg" alt="">
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="index.js" defer></script>
+  </body>
+</html>

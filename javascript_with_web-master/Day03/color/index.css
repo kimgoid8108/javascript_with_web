@@ -1,0 +1,30 @@
+article {
+  display: flex;
+  flex-direction: column;
+}
+
+article > nav {
+}
+
+article > nav > #navList {
+  display: flex;
+}
+article > nav > ul > li {
+  padding: 24px;
+  background-color: #eeeeee;
+  width: 100%;
+  text-align: center;
+}
+
+article > section {
+  padding: 50px;
+  line-height: 70px;
+}
+
+article > section > h3 {
+  font-size: 70px;
+  color: white;
+}
+article > section > p {
+  color: white;
+}

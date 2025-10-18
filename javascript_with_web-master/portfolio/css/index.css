@@ -1,0 +1,488 @@
+/* ---------------------------------------- */
+body {
+  background: url("../image/bg-shadow.jpg") no-repeat right bottom / cover fixed;
+  z-index: -1;
+}
+
+/* 로딩 화면 css
+-------------------------------------------- */
+#loading {
+  background-color: #eee;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 1001;
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+#loading-screen {
+  background-color: #63dbd0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  transform: translateY(100vh);
+  pointer-events: none;
+}
+
+#loading-text {
+  font-size: 36px;
+  font-family: "Paperozi";
+}
+
+/* 메뉴 버튼 css 
+---------------------------------------------*/
+
+.menu-btn1,
+.menu-btn2 {
+  height: 64px;
+  width: 64px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  font-size: 20px;
+  border-radius: 9999px;
+  border: 1px solid;
+  padding: 8px 16px;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  z-index: 1002;
+}
+
+.menu-btn1 {
+  transition: all 0.3s;
+}
+
+.menu-btn1:hover {
+  background-color: #d5edeb;
+}
+
+.menu-btn2 {
+  color: white;
+  border: 2px solid white;
+  transition: all 0.3s;
+}
+
+.menu-btn2:hover {
+  background-color: #d5edeb;
+}
+
+.box {
+  z-index: 1003;
+  position: fixed;
+  width: 600px;
+  height: 100vh;
+  background-color: #403632;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: all 0.3s;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  padding: 150px 100px;
+  line-height: 3;
+  font-size: 50px;
+  color: #d5edeb;
+  text-align: center;
+}
+
+.menu-list > li {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.menu-list > li:hover {
+  color: #63dbd0;
+}
+
+.hidden {
+  transform: translateX(100%);
+}
+.show {
+  transform: translateX(0);
+}
+
+/* 스와이프 섹션 css 
+---------------------------------------------*/
+.swiper {
+  height: 100vh;
+}
+
+.swiper-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+/* 화면사진 및 텍스트 섹션 css 
+---------------------------------------------*/
+
+/* first 섹션 css 
+---------------------------------------------*/
+.first {
+  height: 100vh;
+  position: relative;
+}
+
+.first::after {
+  content: "";
+  width: 50%;
+  height: 100vh;
+  background: url("../image/bg-hero.jpg") no-repeat center / cover;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.first > .title {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  font-size: 200px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #403632;
+  line-height: 1.2;
+  font-family: "GangwonEducationTteontteon";
+}
+
+/* second 섹션 css 
+---------------------------------------------*/
+.second {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "GangwonEducationTteontteon";
+}
+
+.second::after {
+  content: "";
+  position: absolute;
+  top: 57.5%;
+  right: 0;
+  width: 610px;
+  height: 810px;
+  background: url("../image/second.jpg") no-repeat center / cover;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.concept {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.first-title {
+  width: 576px;
+  height: 108px;
+  font-size: 64px;
+  margin: 0px 0px 48px;
+  text-align: center;
+  transform: translate(-55%, 80%);
+  color: #403632;
+}
+
+.second-title {
+  width: 576px;
+  height: 108px;
+  font-size: 20px;
+  margin: 0px 0px 32px;
+  line-height: 1.7;
+  transform: translate(-55%, 50%);
+  font-family: "GangwonEducationModuche";
+}
+
+.text-box {
+  position: absolute;
+  width: 1000px;
+  height: 618px;
+  background-color: #eee;
+  z-index: -1;
+
+  transform: translate(-7%, 12%);
+}
+
+/* third 섹션 css 
+---------------------------------------------*/
+.gallery {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.gallery > .gallery-image {
+  width: 100%;
+  max-width: 900px;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+
+.gallery-pictures {
+  display: flex;
+  flex-direction: column;
+
+  display: flex;
+  text-align: center;
+  font-size: 64px;
+  font-family: "GangwonEducationTteontteon";
+  padding: 50px 300px;
+  cursor: pointer;
+  transition: all 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#thumbnails li img:hover {
+  background-color: black;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+h2 {
+  margin-bottom: 48px;
+}
+
+#thumbnails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery-pictures li img {
+  width: 156px;
+  height: 210px;
+  object-fit: cover;
+}
+/* fourth 섹션 css 
+---------------------------------------------*/
+
+.shop {
+  width: 100%;
+  max-width: 608px;
+  height: 560px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translate(105%, 5%);
+  padding: 48px;
+
+  position: relative;
+  z-index: 1;
+}
+
+.shop-title {
+  position: absolute;
+  font-size: 64px;
+  margin-bottom: 48px;
+  top: 48px;
+}
+
+.shop-detail {
+  line-height: 1.7;
+  padding: 100px 0px 0px;
+}
+
+.shopBtn {
+  padding: 16px;
+  margin: 32px 0px;
+  color: white;
+  background-color: #403632;
+  border: 1px solid;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.shopBtn:hover {
+  background-color: #d5edeb;
+  color: black;
+}
+
+.shop-franchise {
+  margin: 16px 0px;
+  padding-top: 32px;
+  border-top: 1px solid #eee;
+  height: 50px;
+  font-size: 18px;
+}
+
+.shop-time {
+  padding-top: 32px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.last-img {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .first::after {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .box {
+    width: 250px;
+  }
+
+  .menu-list {
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .first .title {
+    font-size: 60px;
+  }
+
+  .second::after {
+    height: 100vh;
+  }
+
+  .concept {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+
+  .first-title,
+  .second-title {
+    transform: none;
+    position: relative;
+    width: 90%;
+    text-align: center;
+    margin: 8px 0;
+    z-index: 2;
+  }
+
+  .text-box {
+    transform: none;
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    background-color: #eee;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    z-index: 1;
+  }
+
+  .gallery > .gallery-image {
+    max-width: 20px;
+    height: 30px;
+    bottom: 0;
+    left: 0;
+  }
+  .gallery-pictures {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .shop {
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    padding: 24px;
+    transform: translate(7%, 40%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .shop-title {
+    position: relative;
+    font-size: 32px;
+    margin-bottom: 24px;
+    top: 0;
+  }
+
+  .shop-detail {
+    padding: 0;
+    line-height: 1.5;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .shopBtn {
+    width: 100px;
+    padding: 12px;
+    margin: 16px 0px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .shop-franchise {
+    font-size: 14px;
+    margin: 16px 0px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+    height: auto;
+    text-align: center;
+  }
+
+  .shop-time {
+    padding-top: 16px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .last-img {
+    position: relative; /* 절대 위치 제거 */
+    width: 100%;
+    height: 100vh; /* 이미지 비율 유지 */
+    top: 0;
+    left: 0;
+  }
+}
