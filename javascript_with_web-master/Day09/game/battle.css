@@ -1,0 +1,162 @@
+.battle-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* 몬스터 영역 */
+.battle-monster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+}
+
+.monster-image {
+  width: 200px;
+  height: 200px;
+  background: url("GreenMonster.png") center/contain no-repeat;
+  animation: monsterIdle 2s ease-in-out infinite;
+}
+
+@keyframes monsterIdle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.monster-info {
+  flex: 1;
+  max-width: 300px;
+}
+
+.monster-name {
+  color: #ff6b6b;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* HP 바 */
+.hp-bar {
+  width: 100%;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 10px 0;
+  border: 2px solid #fff;
+}
+
+.hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff4757, #ff6348);
+  width: 100%;
+  transition: width 0.5s ease;
+}
+
+.hp-text {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 플레이어 영역 */
+.battle-hero {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+}
+
+.hero-info h2 {
+  color: #4ecdc4;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.battle-hero .hp-fill {
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+}
+
+/* 전투 버튼 */
+.battle-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.battle-actions button {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.battle-actions button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+#btn-attack {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: white;
+}
+
+#btn-defend {
+  background: linear-gradient(135deg, #4ecdc4, #44a5a0);
+  color: white;
+}
+
+#btn-item {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+}
+
+#btn-run {
+  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+  color: white;
+}
+
+/* 전투 로그 */
+.battle-log {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  border-radius: 10px;
+  max-height: 100px;
+  overflow-y: auto;
+  color: white;
+  font-size: 16px;
+}
+
+.battle-log p {
+  margin: 5px 0;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -52,7 +52,34 @@ body {
 }
 
 #shop {
-  /* background-image: url(shop.jpg); */
+  background-image: url(shop.png);
+}
+
+.monster {
+  position: absolute;
+  background: url("GreenMonster.png") center/contain no-repeat;
+  width: 150px;
+  height: 150px;
+  animation: moveAndFlip 4s ease-in-out infinite;
+}
+
+@keyframes moveAndFlip {
+  0%,
+  5% {
+    transform: translateX(50px) scaleX(1);
+  }
+  45%,
+  50% {
+    transform: translateX(-50px) scaleX(1);
+  }
+  50.1%,
+  55% {
+    transform: translateX(-50px) scaleX(-1);
+  }
+  95%,
+  100% {
+    transform: translateX(50px) scaleX(-1);
+  }
 }
 
 .dungeon-Board {
@@ -80,7 +107,7 @@ body {
 
 .shop-Board {
   position: absolute;
-  top: 310px;
+  top: 280px;
   left: 100px;
   padding: 10px;
   font-size: 20px;

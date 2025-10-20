@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const maps = {
     village: document.getElementById("village"),
     dungeon: document.getElementById("dungeon"),
+    shop: document.getElementById("shop"),
   };
 
-  let currentMapId = "village"; // 시작 맵 설정
+  let currentMapId = "village";
   let map = maps[currentMapId];
 
   map.classList.add("active");
@@ -19,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let speed = 3;
   let keys = {};
   let facing = "right";
-  let animationId = null; // 애니메이션 프레임 추적
+  let animationId = null;
+  let shopEnterPosition = { x: 0, y: 0 };
 
   // 키 입력 감지
   window.addEventListener("keydown", (e) => {
@@ -54,33 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return angle;
   }
 
-  // 점이 회전된 사각형 안에 있는지 확인
-  function pointInRotatedRect(px, py, rx, ry, rw, rh, angle) {
-    // 사각형 중심점
-    const cx = rx + rw / 2;
-    const cy = ry + rh / 2;
-
-    // 점을 사각형 중심 기준으로 회전 (역회전)
-    const rad = (-angle * Math.PI) / 180;
-    const cos = Math.cos(rad);
-    const sin = Math.sin(rad);
-
-    const dx = px - cx;
-    const dy = py - cy;
-
-    const rotatedX = dx * cos - dy * sin + cx;
-    const rotatedY = dx * sin + dy * cos + cy;
-
-    // 회전된 좌표가 원래 사각형 안에 있는지 확인
-    return (
-      rotatedX >= rx &&
-      rotatedX <= rx + rw &&
-      rotatedY >= ry &&
-      rotatedY <= ry + rh
-    );
-  }
-
-  // 회전된 사각형끼리 충돌 감지 (SAT 알고리즘)
   function isCollidingRotated(heroX, heroY, heroW, heroH, obstacle) {
     const ox = obstacle.offsetLeft;
     const oy = obstacle.offsetTop;
@@ -89,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const obstacleAngle = getRotationAngle(obstacle);
 
-    // 회전이 없으면 기본 AABB 충돌 감지
     if (Math.abs(obstacleAngle) < 0.1) {
       return !(
         heroX + heroW <= ox ||
@@ -107,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       [heroX, heroY + heroH],
     ];
 
-    // 장애물의 4개 꼭짓점 (회전 적용)
+    // 장애물 (회전 적용)
     const ocx = ox + ow / 2;
     const ocy = oy + oh / 2;
     const rad = (obstacleAngle * Math.PI) / 180;
@@ -121,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       [-ow / 2, oh / 2],
     ].map(([x, y]) => [x * cos - y * sin + ocx, x * sin + y * cos + ocy]);
 
-    //충돌 감지
+    // SAT 충돌 감지
     const axes = [
       [1, 0],
       [0, 1],
@@ -138,13 +112,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const obstMin = Math.min(...obstProj);
       const obstMax = Math.max(...obstProj);
 
-      // 겹치지 않는 축이 있으면 충돌 없음
       if (heroMax < obstMin || obstMax < heroMin) {
         return false;
       }
     }
 
-    // 모든 축에서 겹침 / 충돌
     return true;
   }
 
@@ -204,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dungeonEnterZoneXEnd = mapWidth * 0.3 + 50;
     const heroCenter = x + heroWidth / 2;
 
-    // 빌리지 → 던전 (하단 중앙 입구)
+    // 1. 빌리지 → 던전 (하단 중앙 입구)
     if (
       currentMap.id === "village" &&
       y + heroHeight >= mapHeight - 10 &&
@@ -215,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 던전 → 빌리지 (상단 왼쪽 30% 출구)
+    // 2. 던전 → 빌리지 (상단 왼쪽 30% 출구)
     if (
       currentMap.id === "dungeon" &&
       y <= 10 &&
@@ -226,11 +198,41 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // 3. 빌리지 → Shop (왼쪽 상단 상점 입구)
+    const shopEnterX = 100;
+    const shopEnterY = 310;
+    const shopEnterRange = 60;
+
+    if (
+      currentMap.id === "village" &&
+      x >= shopEnterX - shopEnterRange &&
+      x <= shopEnterX + shopEnterRange &&
+      y >= shopEnterY - shopEnterRange &&
+      y <= shopEnterY + shopEnterRange
+    ) {
+      // 현재 위치 저장
+      shopEnterPosition.x = x;
+      shopEnterPosition.y = y;
+      changeMap("shop");
+      return;
+    }
+
+    // 4. Shop → 빌리지 (상점 나가기 - 하단 중앙)
+    if (
+      currentMap.id === "shop" &&
+      y + heroHeight >= mapHeight - 10 &&
+      heroCenter >= mapWidth / 2 - 50 &&
+      heroCenter <= mapWidth / 2 + 50
+    ) {
+      changeMap("village", false, "fromShop");
+      return;
+    }
+
     animationId = requestAnimationFrame(moveHero);
   }
 
   // 맵 전환 함수
-  function changeMap(nextMapId, fromDungeon = false) {
+  function changeMap(nextMapId, fromDungeon = false, fromShop = false) {
     // 이전 애니메이션 중지
     if (animationId) {
       cancelAnimationFrame(animationId);
@@ -248,12 +250,24 @@ document.addEventListener("DOMContentLoaded", () => {
       // 던전 입장: 상단 왼쪽 30% 지점
       x = map.offsetWidth * 0.3 - heroWidth / 2;
       y = 60;
-    } else if (nextMapId === "village") {
-      // 빌리지로 복귀: 하단 입구
+    } else if (nextMapId === "shop") {
+      // 상점 입장: 하단 중앙에서 시작
       x = map.offsetWidth / 2 - heroWidth / 2;
-      y = fromDungeon
-        ? map.offsetHeight - heroHeight - 70
-        : map.offsetHeight / 2;
+      y = map.offsetHeight - heroHeight - 70;
+    } else if (nextMapId === "village") {
+      if (fromDungeon) {
+        // 던전에서 복귀: 하단 중앙 입구
+        x = map.offsetWidth / 2 - heroWidth / 2;
+        y = map.offsetHeight - heroHeight - 70;
+      } else if (fromShop === "fromShop") {
+        // 상점에서 복귀: 고정 위치로 나오기
+        x = 320;
+        y = 170;
+      } else {
+        // 기본: 빌리지 중앙
+        x = map.offsetWidth / 2 - heroWidth / 2;
+        y = map.offsetHeight / 2;
+      }
     }
 
     currentMapId = nextMapId;
