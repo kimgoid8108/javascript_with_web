@@ -3,7 +3,7 @@ const shopinven = document.querySelector("#shopinven");
 const close = document.querySelector("#close");
 
 const potion = document.querySelector("#potion");
-const postioninfo = document.querySelector("#potioninfo");
+const potioninfo = document.querySelector("#potioninfo");
 const sword = document.querySelector("#sword");
 
 const yes = document.querySelector("#yes");
@@ -18,13 +18,13 @@ close.addEventListener("click", () => {
 });
 
 potion.addEventListener("click", () => {
-  postioninfo.style.display = "block";
+  potioninfo.style.display = "block";
 });
 
 yes.addEventListener("click", () => {
-  postioninfo.style.display = "none";
+  potioninfo.style.display = "none";
 });
 
 no.addEventListener("click", () => {
-  postioninfo.style.display = "none";
+  potioninfo.style.display = "none";
 });

@@ -78,6 +78,15 @@ i {
 .yesORno {
   display: flex;
   justify-content: center;
-  line-height: 5;
-  margin: 5px;
+  /* line-height: 5; */
+  gap: 10px; /* 버튼 사이 간격 */
+}
+
+#yes,
+#no {
+  cursor: pointer;
+  user-select: none; /* 선택 방지 */
+  background-color: transparent;
+  border: none;
+  color: white;
 }
