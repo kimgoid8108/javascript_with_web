@@ -23,6 +23,42 @@ document.addEventListener("DOMContentLoaded", () => {
   let animationId = null;
   let shopEnterPosition = { x: 0, y: 0 };
 
+<<<<<<< HEAD
+=======
+  // ⭐ 닉네임 표시용 div 생성
+  const nicknameLabel = document.createElement("div");
+  nicknameLabel.id = "heroNickname";
+  nicknameLabel.style.position = "absolute";
+  nicknameLabel.style.color = "white";
+  nicknameLabel.style.fontWeight = "bold";
+  nicknameLabel.style.fontSize = "14px";
+  nicknameLabel.style.textShadow = "2px 2px 4px black, -1px -1px 2px black";
+  nicknameLabel.style.pointerEvents = "none";
+  nicknameLabel.style.zIndex = "100";
+  nicknameLabel.style.whiteSpace = "nowrap";
+  document.getElementById("game-container").appendChild(nicknameLabel);
+
+  // ⭐ 닉네임 업데이트 함수
+  function updateNicknamePosition() {
+    if (window.playerNickname) {
+      nicknameLabel.textContent = window.playerNickname;
+      const heroRect = hero.getBoundingClientRect();
+      const containerRect = document
+        .getElementById("game-container")
+        .getBoundingClientRect();
+
+      nicknameLabel.style.left = `${
+        heroRect.left - containerRect.left + hero.offsetWidth / 2
+      }px`;
+      nicknameLabel.style.top = `${heroRect.top - containerRect.top - 20}px`;
+      nicknameLabel.style.transform = "translateX(-50%)";
+      nicknameLabel.style.display = "block";
+    } else {
+      nicknameLabel.style.display = "none";
+    }
+  }
+
+>>>>>>> 384acc0 (10/22 오전)
   // 키 입력 감지
   window.addEventListener("keydown", (e) => {
     keys[e.key] = true;
@@ -73,7 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
+<<<<<<< HEAD
     // 히어로의 4개 꼭짓점
+=======
+>>>>>>> 384acc0 (10/22 오전)
     const heroCorners = [
       [heroX, heroY],
       [heroX + heroW, heroY],
@@ -81,7 +120,10 @@ document.addEventListener("DOMContentLoaded", () => {
       [heroX, heroY + heroH],
     ];
 
+<<<<<<< HEAD
     // 장애물 (회전 적용)
+=======
+>>>>>>> 384acc0 (10/22 오전)
     const ocx = ox + ow / 2;
     const ocy = oy + oh / 2;
     const rad = (obstacleAngle * Math.PI) / 180;
@@ -95,7 +137,10 @@ document.addEventListener("DOMContentLoaded", () => {
       [-ow / 2, oh / 2],
     ].map(([x, y]) => [x * cos - y * sin + ocx, x * sin + y * cos + ocy]);
 
+<<<<<<< HEAD
     // SAT 충돌 감지
+=======
+>>>>>>> 384acc0 (10/22 오전)
     const axes = [
       [1, 0],
       [0, 1],
@@ -120,7 +165,10 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   }
 
+<<<<<<< HEAD
   // 충돌 감지(히어로 좌상단 기준)
+=======
+>>>>>>> 384acc0 (10/22 오전)
   function isColliding(heroX, heroY, heroW, heroH, obstacle) {
     return isCollidingRotated(heroX, heroY, heroW, heroH, obstacle);
   }
@@ -131,7 +179,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let newX = x;
     let newY = y;
 
+
     // 이동 입력 처리
+
     if (keys["ArrowUp"] || keys["w"]) newY -= speed;
     if (keys["ArrowDown"] || keys["s"]) newY += speed;
     if (keys["ArrowLeft"] || keys["a"]) newX -= speed;
@@ -142,24 +192,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const mapWidth = map.offsetWidth;
     const mapHeight = map.offsetHeight;
 
+
     // 맵 경계 제한
     newX = Math.max(0, Math.min(mapWidth - heroWidth, newX));
     newY = Math.max(0, Math.min(mapHeight - heroHeight, newY));
 
     // 장애물 충돌
+
+    newX = Math.max(0, Math.min(mapWidth - heroWidth, newX));
+    newY = Math.max(0, Math.min(mapHeight - heroHeight, newY));
+
+
     let blockedX = false;
     let blockedY = false;
 
     currentMap.querySelectorAll(".obstacle").forEach((ob) => {
+
       // X축만 변경했을 때 충돌 체크
       if (isColliding(newX, y, heroWidth, heroHeight, ob)) {
         blockedX = true;
       }
       // Y축만 변경했을 때 충돌 체크
+
+      if (isColliding(newX, y, heroWidth, heroHeight, ob)) {
+        blockedX = true;
+      }
+
       if (isColliding(x, newY, heroWidth, heroHeight, ob)) {
         blockedY = true;
       }
     });
+
 
     // 충돌하지 않은 축만 이동
     if (!blockedX) x = newX;
@@ -170,13 +233,25 @@ document.addEventListener("DOMContentLoaded", () => {
     hero.style.top = `${y}px`;
 
     // 맵 전환 영역 정의
+
+    if (!blockedX) x = newX;
+    if (!blockedY) y = newY;
+
+    hero.style.left = `${x}px`;
+    hero.style.top = `${y}px`;
+
+    // ⭐ 닉네임 위치 업데이트
+    updateNicknamePosition();
+
     const villageEnterZoneXStart = mapWidth / 2 - 50;
     const villageEnterZoneXEnd = mapWidth / 2 + 50;
     const dungeonEnterZoneXStart = mapWidth * 0.3 - 50;
     const dungeonEnterZoneXEnd = mapWidth * 0.3 + 50;
     const heroCenter = x + heroWidth / 2;
 
+
     // 1. 빌리지 → 던전 (하단 중앙 입구)
+
     if (
       currentMap.id === "village" &&
       y + heroHeight >= mapHeight - 10 &&
@@ -187,7 +262,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+
     // 2. 던전 → 빌리지 (상단 왼쪽 30% 출구)
+
     if (
       currentMap.id === "dungeon" &&
       y <= 10 &&
@@ -198,7 +275,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+
     // 3. 빌리지 → Shop (왼쪽 상단 상점 입구)
+
     const shopEnterX = 100;
     const shopEnterY = 310;
     const shopEnterRange = 60;
@@ -210,6 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
       y >= shopEnterY - shopEnterRange &&
       y <= shopEnterY + shopEnterRange
     ) {
+
       // 현재 위치 저장
       shopEnterPosition.x = x;
       shopEnterPosition.y = y;
@@ -219,6 +299,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 4. Shop → 빌리지 (상점 나가기 - 하단 중앙)
+
+      shopEnterPosition.x = x;
+      shopEnterPosition.y = y;
+      changeMap("shop");
+      return;
+    }
+
+
     if (
       currentMap.id === "shop" &&
       y + heroHeight >= mapHeight - 10 &&
@@ -235,9 +323,13 @@ document.addEventListener("DOMContentLoaded", () => {
     animationId = requestAnimationFrame(moveHero);
   }
 
+
   // 맵 전환 함수
-  function changeMap(nextMapId, fromDungeon = false, fromShop = false) {
+ 
     // 이전 애니메이션 중지
+
+  function changeMap(nextMapId, fromDungeon = false, fromShop = false) {
+
     if (animationId) {
       cancelAnimationFrame(animationId);
     }
@@ -247,7 +339,9 @@ document.addEventListener("DOMContentLoaded", () => {
     map.classList.add("active");
     map.appendChild(hero);
 
+
     // ⭐ 이 부분 추가 - Heroinfo 항상 표시
+
     const heroInfo = document.getElementById("Heroinfo");
     if (heroInfo) {
       heroInfo.style.display = "block";
@@ -258,6 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroHeight = hero.offsetHeight;
 
     if (nextMapId === "dungeon") {
+
       // 던전 입장: 상단 왼쪽 30% 지점
       x = map.offsetWidth * 0.3 - heroWidth / 2;
       y = 60;
@@ -280,6 +375,23 @@ document.addEventListener("DOMContentLoaded", () => {
         y = 170;
       } else {
         // 기본: 빌리지 중앙
+
+      x = map.offsetWidth * 0.3 - heroWidth / 2;
+      y = 60;
+      if (heroInfo) heroInfo.style.display = "block";
+    } else if (nextMapId === "shop") {
+      x = map.offsetWidth / 2 - heroWidth / 2;
+      y = map.offsetHeight - heroHeight - 70;
+      if (heroInfo) heroInfo.style.display = "block";
+    } else if (nextMapId === "village") {
+      if (fromDungeon) {
+        x = map.offsetWidth / 2 - heroWidth / 2;
+        y = map.offsetHeight - heroHeight - 70;
+      } else if (fromShop === "fromShop") {
+        x = 320;
+        y = 170;
+      } else {
+
         x = map.offsetWidth / 2 - heroWidth / 2;
         y = map.offsetHeight / 2;
       }
@@ -287,10 +399,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     currentMapId = nextMapId;
 
+
     // 새로운 애니메이션 루프 시작
     animationId = requestAnimationFrame(moveHero);
   }
 
   // 초기 애니메이션 시작
+
+    animationId = requestAnimationFrame(moveHero);
+  }
+
+
   moveHero();
 });

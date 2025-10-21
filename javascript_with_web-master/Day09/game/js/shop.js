@@ -104,34 +104,56 @@ function useItem(itemName) {
     alert("사용할 아이템이 없습니다!");
     return;
   }
+}
+// 아이템 종류에 따라 효과 적용
+if (itemName == "작은포션🧪") {
+  // 체력 회복
+  const hpElement = document.getElementById("HP");
+  if (hpElement) {
+    const hpText = hpElement.textContent;
+    const hpMatch = hpText.match(/(\d+)\/(\d+)/);
 
-  // 아이템 종류에 따라 효과 적용
-  if (itemName == "작은포션🧪") {
-    // 체력 회복
-    const hpElement = document.getElementById("HP");
-    if (hpElement) {
-      const hpText = hpElement.textContent;
-      const hpMatch = hpText.match(/(\d+)\/(\d+)/);
+    if (hpMatch) {
+      let currentHP = parseInt(hpMatch[1]);
+      let maxHP = parseInt(hpMatch[2]);
 
-      if (hpMatch) {
-        let currentHP = parseInt(hpMatch[1]);
-        let maxHP = parseInt(hpMatch[2]);
+      // 체력 50 회복
+      currentHP = Math.min(currentHP + 50, maxHP);
+      hpElement.textContent = `체력: ${currentHP}/${maxHP}`;
 
-        // 체력 50 회복
-        currentHP = Math.min(currentHP + 50, maxHP);
-        hpElement.textContent = `체력: ${currentHP}/${maxHP}`;
+      alert("체력을 50 회복했습니다!");
 
-        alert("체력을 50 회복했습니다!");
-
-        // 아이템 개수 감소
-        inventory[itemName] -= 1;
-        if (inventory[itemName] <= 0) {
-          delete inventory[itemName];
-        }
-
-        localStorage.setItem("inventory", JSON.stringify(inventory));
-        updateInventoryUI();
+      // 아이템 개수 감소
+      inventory[itemName] -= 1;
+      if (inventory[itemName] <= 0) {
+        delete inventory[itemName];
       }
+
+      localStorage.setItem("inventory", JSON.stringify(inventory));
+      updateInventoryUI();
+    }
+  }
+  // 정확한 비교
+  if (itemName.includes("작은포션") || itemName === "작은포션🧪") {
+    console.log("✅ 포션 사용!");
+    const hpElement = document.getElementById("HP");
+
+    if (hpElement) {
+      let currentHP = parseInt(hpElement.textContent);
+      const maxHP = 100;
+
+      currentHP = Math.min(currentHP + 50, maxHP);
+      hpElement.textContent = currentHP;
+
+      alert(`체력을 50 회복했습니다! (${currentHP}/${maxHP})`);
+
+      inventory[itemName] -= 1;
+      if (inventory[itemName] <= 0) {
+        delete inventory[itemName];
+      }
+
+      localStorage.setItem("inventory", JSON.stringify(inventory));
+      updateInventoryUI();
     }
   } else if (itemName == "철검🗡️") {
     // 무기 장착

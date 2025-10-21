@@ -59,7 +59,8 @@ window.addEventListener("keydown", (e) => {
     canAttack = false;
 
     // 🔊 총알 사운드 (여기는 꼭 넣기!)
-    const shootSound = new Audio("audio/shoot.mp3");
+    const shootSound = new Audio("sound/gunSound.mp3");
+
     shootSound.currentTime = 0;
     shootSound.play();
 
@@ -140,7 +141,16 @@ window.addEventListener("keydown", (e) => {
         if (monsterHp == 0) {
           monster.style.display = "none";
           hpBarContainer.style.display = "none"; // HP 바도 숨기기
+
           monsterHpText.style.display = "none"; // HP 텍스트도 숨기기
+
+          monsterHpText.style.display = "none";
+
+          const deathSound = new Audio("sound/monsterDeath.mp3");
+          deathSound.currentTime = 0;
+          deathSound
+            .play()
+            .catch((err) => console.log("사운드 재생 실패:", err));
 
           // 10초 후 몬스터 리젠
           setTimeout(() => {
