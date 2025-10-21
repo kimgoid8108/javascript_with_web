@@ -3,13 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>영철이 RPG</title>
+
+    <title>RPG</title>
+
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../reset.css" />
+
     <link rel="stylesheet" href="css/index.css" />
+
     <link rel="stylesheet" href="css/hero.css" />
     <link rel="stylesheet" href="css/village.css" />
     <link rel="stylesheet" href="css/dungeon.css" />
@@ -19,6 +25,13 @@
     <link rel="stylesheet" href="css/heroinfo.css" />
 
     <script src="js/heroMove.js" defer></script>
+
+    <link rel="stylesheet" href="css/fadein.css" />
+    <link rel="stylesheet" href="css/nickname.css" />
+
+    <script src="js/heroMove.js" defer></script>
+    <script src="js/Nickname.js" defer></script>
+
     <script src="js/index.js" defer></script>
     <script src="js/battle.js" defer></script>
     <script src="js/shop.js" defer></script>
@@ -26,14 +39,72 @@
     <script src="js/monsterAttack.js" defer></script>
   </head>
   <body>
+    <script>
+      // BGM
+      const bgm = new Audio("sound/citypop.mp3");
+      bgm.loop = true; // 무한 반복
+      bgm.volume = 0.4; //  볼륨
+
+      // 페이지 로드 후 재생
+      window.addEventListener("load", () => {
+        bgm.play().catch((err) => console.log("BGM 재생 실패:", err));
+      });
+    </script>
+
     <div id="game-container">
+      <div id="pageTransition"></div>
+      <div id="nicknameModal" style="display: none">
+        <div
+          style="
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+          "
+        >
+          <h2 style="color: white; margin-bottom: 20px">닉네임을 입력하세요</h2>
+          <input
+            type="text"
+            id="nicknameInput"
+            maxlength="10"
+            placeholder="닉네임 (최대 10자)"
+            style="
+              padding: 10px;
+              font-size: 18px;
+              border-radius: 5px;
+              border: none;
+              margin-bottom: 20px;
+              width: 200px;
+            "
+          />
+          <br />
+          <button
+            id="nicknameSubmit"
+            style="
+              padding: 10px 30px;
+              font-size: 18px;
+              cursor: pointer;
+              border-radius: 5px;
+              border: none;
+              background: #4caf50;
+              color: white;
+            "
+          >
+            확인
+          </button>
+        </div>
+      </div>
       <section id="mainWindow"></section>
       <div id="Heroinfo">
         <img class="photo" src="image/hero.png" alt="" />
         <div class="infomation">
           <h2 id="ninkname">이름:</h2>
           <p id="gold">골드:</p>
+
           <p>히어로 HP: <span id="Hp">100</span>/100</p>
+
+          <p>히어로 HP: <span id="HP">100</span>/100</p>
+          <p>히어로 경험치: <span id="EXP">0</span>/100</p>
         </div>
       </div>
 
@@ -132,6 +203,8 @@
           data-max-hp="100"
           data-attack="15"
           data-defense="5"
+          data-gold="50"
+          data-exp="30"
         ></div>
         <div class="village-Board">마을 입구</div>
         <div class="Boss-Board">보스동굴 입구</div>

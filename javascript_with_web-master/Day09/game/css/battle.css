@@ -74,3 +74,21 @@
   left: 50px;
   top: 300px;
 }
+#dungeon {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  background-color: #222; /* 확인용 배경 */
+  overflow: hidden;
+}
+
+#GreenMonster {
+  position: absolute;
+  left: 50px;
+  top: 300px;
+  width: 150px;
+  height: 150px;
+  background-image: url("../image/GreenMonster.png");
+  background-size: cover;
+  transition: transform 0.1s linear;
+}

@@ -9,7 +9,11 @@
 #Heroinfo {
   position: fixed;
   width: 250px;
+
   height: 70px;
+
+  height: 100px;
+
   background-color: rgba(255, 255, 255, 0.8);
   overflow: hidden;
   z-index: 99999; /* z-index를 더 높게 설정 */
