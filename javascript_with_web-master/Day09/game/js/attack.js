@@ -60,6 +60,7 @@ window.addEventListener("keydown", (e) => {
 
     // 🔊 총알 사운드 (여기는 꼭 넣기!)
     const shootSound = new Audio("audio/shoot.mp3");
+    shootSound.currentTime = 0;
     shootSound.play();
 
     // 0.3초 쿨타임
