@@ -215,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
       shopEnterPosition.x = x;
       shopEnterPosition.y = y;
       changeMap("shop");
+
       return;
     }
 
@@ -247,6 +248,13 @@ document.addEventListener("DOMContentLoaded", () => {
     map.classList.add("active");
     map.appendChild(hero);
 
+    // ⭐ 이 부분 추가 - Heroinfo 항상 표시
+    const heroInfo = document.getElementById("Heroinfo");
+    if (heroInfo) {
+      heroInfo.style.display = "block";
+      heroInfo.style.visibility = "visible";
+    }
+
     const heroWidth = hero.offsetWidth;
     const heroHeight = hero.offsetHeight;
 
@@ -254,10 +262,14 @@ document.addEventListener("DOMContentLoaded", () => {
       // 던전 입장: 상단 왼쪽 30% 지점
       x = map.offsetWidth * 0.3 - heroWidth / 2;
       y = 60;
+      // ⭐ 던전에서도 표시
+      if (heroInfo) heroInfo.style.display = "block";
     } else if (nextMapId === "shop") {
       // 상점 입장: 하단 중앙에서 시작
       x = map.offsetWidth / 2 - heroWidth / 2;
       y = map.offsetHeight - heroHeight - 70;
+      // ⭐ 상점에서도 표시
+      if (heroInfo) heroInfo.style.display = "block";
     } else if (nextMapId === "village") {
       if (fromDungeon) {
         // 던전에서 복귀: 하단 중앙 입구

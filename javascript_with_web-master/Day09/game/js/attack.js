@@ -5,7 +5,9 @@ let monsterMaxHp = parseInt(monster.getAttribute("data-max-hp"));
 let heroAttack = 5;
 
 let canAttack = true;
+// -----------------------------------------------------------------------
 
+// -----------------------------------------------------------------------
 // HP 바
 const hpBarContainer = document.createElement("div");
 hpBarContainer.style.position = "absolute";
@@ -13,7 +15,9 @@ hpBarContainer.style.width = "100px";
 hpBarContainer.style.height = "10px";
 hpBarContainer.style.background = "#333";
 hpBarContainer.style.border = "1px solid black";
-hpBarContainer.style.transform = "translateY(-20px)"; // 몬스터 위에
+
+hpBarContainer.style.transform = "translateY(-20px)";
+hpBarContainer.style.transform = "translateX(20px)"; // 몬스터 위에
 
 const monsterHpFill = document.createElement("div");
 monsterHpFill.style.width = "100%";
@@ -26,14 +30,17 @@ monster.appendChild(hpBarContainer);
 const monsterHpText = document.createElement("div");
 monsterHpText.textContent = `HP: ${monsterHp}/${monsterMaxHp}`;
 monsterHpText.style.position = "absolute";
-monsterHpText.style.transform = "translateY(-35px)";
+monsterHpText.style.left = "20px";
+monsterHpText.style.transform = "translateY(-20px)";
 monsterHpText.style.color = "white";
 monsterHpText.style.fontSize = "12px";
 monster.appendChild(monsterHpText); // monster에 추가!
 
 window.addEventListener("keydown", (e) => {
   const hero = document.getElementById("Hero");
+  // -----------------------------------------------------------------------
 
+  // -----------------------------------------------------------------------
   // 방향키로 방향 전환
   if (e.key == "ArrowLeft" || e.key == "a") {
     hero.classList.remove("facing-right");
@@ -53,7 +60,7 @@ window.addEventListener("keydown", (e) => {
     // 0.5초 후에 다시 공격 가능
     setTimeout(() => {
       canAttack = true;
-    }, 400);
+    }, 300);
     // 현재 방향 확인 (왼쪽이면 -1, 오른쪽이면 1)
     const currentScale = hero.classList.contains("facing-right") ? 1 : -1;
 
@@ -88,7 +95,9 @@ window.addEventListener("keydown", (e) => {
         projectile.remove();
         return;
       }
+      // -----------------------------------------------------------------------
 
+      // -----------------------------------------------------------------------
       // 몬스터 히트박스 설정
       const monsterRect = monster.getBoundingClientRect();
       const projectileRect = projectile.getBoundingClientRect();
@@ -108,6 +117,14 @@ window.addEventListener("keydown", (e) => {
         const hpPercent = (monsterHp / monsterMaxHp) * 100;
         monsterHpFill.style.width = hpPercent + "%";
         monsterHpText.textContent = `HP: ${monsterHp}/${monsterMaxHp}`;
+
+        const originalfilter = monster.style.filter;
+        monster.style.filter =
+          "brightness(1.5) sepia(1) saturate(5) hue-rotate(-50deg)";
+
+        setTimeout(() => {
+          monster.style.filter = originalfilter;
+        }, 200);
 
         if (monsterHp == 0) {
           monster.style.display = "none";

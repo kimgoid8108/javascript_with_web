@@ -12,7 +12,10 @@
   height: 70px;
   background-color: rgba(255, 255, 255, 0.8);
   overflow: hidden;
-  z-index: 9999;
+  z-index: 99999; /* z-index를 더 높게 설정 */
+  top: 10px; /* 위치를 명확하게 지정 */
+  left: 10px; /* 위치를 명확하게 지정 */
+  pointer-events: auto; /* 클릭 이벤트 활성화 */
 }
 
 .photo {

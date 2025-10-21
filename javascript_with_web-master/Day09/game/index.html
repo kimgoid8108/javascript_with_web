@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>영철이 RPG</title>
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -27,6 +27,14 @@
   <body>
     <div id="game-container">
       <section id="mainWindow"></section>
+       <div id="Heroinfo">
+        <img class="photo" src="image/hero.png" alt="" />
+        <div class="infomation">
+          <h2 id="ninkname">이름:</h2>
+          <p id="gold">골드:</p>
+          <p id="HP">체력: 100/100</p>
+        </div>
+      </div>
       <section id="village" class="map active">
         <div id="Hero"></div>
         <div id="inventory" class="map-inventory">
@@ -36,14 +44,6 @@
           </div>
         </div>
         <div id="game-container">
-      <div id="Heroinfo">
-        <img class="photo" src="image/hero.png" alt="" />
-        <div class="infomation">
-          <h2 id="ninkname">이름:</h2>
-          <p id="gold">골드:</p>
-          <p id="HP">체력: 100/100</p>
-        </div>
-      </div>
         <div class="shop-Board">상점 입구</div>
         <div class="dungeon-Board">던전 입구</div>
         <div class="obstacleList">
