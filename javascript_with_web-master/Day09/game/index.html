@@ -23,27 +23,29 @@
     <script src="js/battle.js" defer></script>
     <script src="js/shop.js" defer></script>
     <script src="js/attack.js" defer></script>
+    <script src="js/monsterAttack.js" defer></script>
   </head>
   <body>
     <div id="game-container">
       <section id="mainWindow"></section>
-       <div id="Heroinfo">
+      <div id="Heroinfo">
         <img class="photo" src="image/hero.png" alt="" />
         <div class="infomation">
           <h2 id="ninkname">이름:</h2>
           <p id="gold">골드:</p>
-          <p id="HP">체력: 100/100</p>
+          <p>히어로 HP: <span id="Hp">100</span>/100</p>
+        </div>
+      </div>
+
+      <div id="inventory" class="map-inventory">
+        <div class="inventory-container">
+          <h2>인벤토리</h2>
+          <ul id="inventory-items"></ul>
         </div>
       </div>
       <section id="village" class="map active">
         <div id="Hero"></div>
-        <div id="inventory" class="map-inventory">
-          <div class="inventory-container">
-            <h2>인벤토리</h2>
-            <ul id="inventory-items"></ul>
-          </div>
-        </div>
-        <div id="game-container">
+
         <div class="shop-Board">상점 입구</div>
         <div class="dungeon-Board">던전 입구</div>
         <div class="obstacleList">
@@ -292,8 +294,8 @@
           <h2 class="title">
             상점 아이템<i id="close" class="ri-close-large-line"></i>
           </h2>
-          <p id="potion">1. 체력 물약: 10G</p>
-          <p id="sword">2. 철검: 50G</p>
+          <p id="potion">1. 작은 포션🧪: 10G</p>
+          <p id="sword">2. 철검🗡️: 50G</p>
         </div>
         <div id="potioninfo">
           <h2 class="alarm">알림</h2>
@@ -315,4 +317,3 @@
     </div>
   </body>
 </html>
-

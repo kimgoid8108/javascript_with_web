@@ -28,7 +28,7 @@ potion.addEventListener("click", () => {
 
 potionYes.addEventListener("click", () => {
   alert("구매완료");
-  addToInventory("포션🧪");
+  addToInventory("작은 포션🧪");
   potioninfo.style.display = "none";
 });
 
@@ -106,7 +106,7 @@ function useItem(itemName) {
   }
 
   // 아이템 종류에 따라 효과 적용
-  if (itemName === "포션🧪") {
+  if (itemName == "작은포션🧪") {
     // 체력 회복
     const hpElement = document.getElementById("HP");
     if (hpElement) {
@@ -133,11 +133,14 @@ function useItem(itemName) {
         updateInventoryUI();
       }
     }
-  } else if (itemName === "철검🗡️") {
+  } else if (itemName == "철검🗡️") {
     // 무기 장착
-    alert("철검을 장착했습니다! 공격력이 증가합니다.");
+    alert("철검을 장착했습니다!");
     const heroElement = document.getElementById("Hero");
     const heroInfoPhoto = document.querySelector("#Heroinfo .photo");
+    const ironSword = document.querySelector(
+      '#inventory-items li[data-name="철검🗡️"]'
+    );
 
     if (heroElement) {
       heroElement.style.backgroundImage = "url('image/Swordhero.png')";
@@ -145,6 +148,10 @@ function useItem(itemName) {
 
     if (heroInfoPhoto) {
       heroInfoPhoto.src = "image/Swordhero.png";
+    }
+
+    if (ironSword && !ironSword.textContent.includes("사용중")) {
+      ironSword.textContent += " (사용중)";
     }
 
     // 장착 상태 저장 (필요시 사용)

@@ -37,7 +37,9 @@ monsterHpText.style.fontSize = "12px";
 monster.appendChild(monsterHpText); // monster에 추가!
 
 window.addEventListener("keydown", (e) => {
+  const activeMap = document.querySelector(".map.active");
   const hero = document.getElementById("Hero");
+  activeMap.appendChild(hero);
   // -----------------------------------------------------------------------
 
   // -----------------------------------------------------------------------

@@ -184,7 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
       heroCenter <= villageEnterZoneXEnd
     ) {
       changeMap("dungeon");
-      inventory.style.display = "none";
       return;
     }
 
