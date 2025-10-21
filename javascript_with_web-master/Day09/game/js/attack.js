@@ -56,8 +56,16 @@ window.addEventListener("keydown", (e) => {
   if (e.key.toLowerCase() === "z" || e.key.toLowerCase() === "j") {
     // 쿨타임 체크
     if (!canAttack) return;
-
     canAttack = false;
+
+    // 🔊 총알 사운드 (여기는 꼭 넣기!)
+    const shootSound = new Audio("audio/shoot.mp3");
+    shootSound.play();
+
+    // 0.3초 쿨타임
+    setTimeout(() => {
+      canAttack = true;
+    }, 300);
 
     // 0.5초 후에 다시 공격 가능
     setTimeout(() => {
