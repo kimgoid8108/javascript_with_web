@@ -184,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
       heroCenter <= villageEnterZoneXEnd
     ) {
       changeMap("dungeon");
+      inventory.style.display = "none";
       return;
     }
 
@@ -225,6 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
       heroCenter <= mapWidth / 2 + 50
     ) {
       changeMap("village", false, "fromShop");
+      shopinven.style.display = "none";
+      potioninfo.style.display = "none";
+      swordinfo.style.display = "none";
       return;
     }
 

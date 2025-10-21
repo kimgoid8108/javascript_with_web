@@ -7,15 +7,31 @@ body {
   position: absolute;
   width: 50px;
   height: 50px;
-  background: url("hero.png") center/contain no-repeat;
+  background: url(../image/hero.png) center/contain no-repeat;
 
   transition: transform 0.1s;
   z-index: 10;
 }
+.attack {
+  animation: attackAnim 0.2s forwards;
+}
+
+/* @keyframes attackAnim {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px); 
+  }
+  100% {
+    transform: translateX(0); 
+  }
+} */
 
 .obstacle {
   position: absolute;
-  /* background: rgba(0, 0, 0, 0.5); */
+  /* background: rgba(0, 0, 0, 0.5);
+  border: 1px solid red; */
   z-index: 5;
 }
 
@@ -42,44 +58,17 @@ body {
 }
 
 #village {
-  background-image: url(village.jpg);
+  background-image: url(../image/village.jpg);
   border: 3px solid black;
 }
 
 #dungeon {
-  background-image: url(dungeon.jpg);
+  background-image: url(../image/dungeon.jpg);
   border: 3px solid black;
 }
 
 #shop {
-  background-image: url(shop.png);
-}
-
-.monster {
-  position: absolute;
-  background: url("GreenMonster.png") center/contain no-repeat;
-  width: 150px;
-  height: 150px;
-  animation: moveAndFlip 4s ease-in-out infinite;
-}
-
-@keyframes moveAndFlip {
-  0%,
-  5% {
-    transform: translateX(50px) scaleX(1);
-  }
-  45%,
-  50% {
-    transform: translateX(-50px) scaleX(1);
-  }
-  50.1%,
-  55% {
-    transform: translateX(-50px) scaleX(-1);
-  }
-  95%,
-  100% {
-    transform: translateX(50px) scaleX(-1);
-  }
+  background-image: url(../image/shop.png);
 }
 
 .dungeon-Board {
@@ -97,6 +86,7 @@ body {
   align-items: center;
   line-height: 1.5;
   background-color: rgba(255, 255, 255, 0.5);
+  font-family: "NeoDonggeunmo";
 }
 
 .dungeon-Board::after {
@@ -108,7 +98,7 @@ body {
 .shop-Board {
   position: absolute;
   top: 280px;
-  left: 100px;
+  left: 93px;
   padding: 10px;
   font-size: 20px;
   font-weight: 600;
@@ -120,6 +110,7 @@ body {
   align-items: center;
   line-height: 1.5;
   background-color: rgba(255, 255, 255, 0.5);
+  font-family: "NeoDonggeunmo";
 }
 
 .shop-Board::before {
@@ -131,7 +122,7 @@ body {
 .village-Board {
   position: absolute;
   top: 10px;
-  left: 175px;
+  left: 170px;
   padding: 10px;
   font-size: 20px;
   font-weight: 600;
@@ -143,6 +134,7 @@ body {
   align-items: center;
   line-height: 1.5;
   background-color: rgba(255, 255, 255, 0.5);
+  font-family: "NeoDonggeunmo";
 }
 
 .village-Board::before {
@@ -154,7 +146,7 @@ body {
 .Boss-Board {
   position: absolute;
   top: 130px;
-  left: 0;
+  left: -10px;
   padding: 10px;
   font-size: 20px;
   font-weight: 600;
@@ -166,6 +158,7 @@ body {
   align-items: center;
   line-height: 1.5;
   background-color: rgba(255, 255, 255, 0.5);
+  font-family: "NeoDonggeunmo";
 }
 
 .Boss-Board::before {

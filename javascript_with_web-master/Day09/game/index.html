@@ -9,23 +9,41 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../reset.css" />
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="hero.css" />
-    <link rel="stylesheet" href="village.css" />
-    <link rel="stylesheet" href="dungeon.css" />
-    <link rel="stylesheet" href="shop.css" />
-    <link rel="stylesheet" href="battle.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/village.css" />
+    <link rel="stylesheet" href="css/dungeon.css" />
+    <link rel="stylesheet" href="css/shop.css" />
+    <link rel="stylesheet" href="css/battle.css" />
+    <link rel="stylesheet" href="css/inventory.css" />
+    <link rel="stylesheet" href="css/heroinfo.css" />
 
-    <script src="heroMove.js" defer></script>
-    <script src="index.js" defer></script>
-    <script src="battle.js" defer></script>
-    <script src="shop.js" defer></script>
+    <script src="js/heroMove.js" defer></script>
+    <script src="js/index.js" defer></script>
+    <script src="js/battle.js" defer></script>
+    <script src="js/shop.js" defer></script>
+    <script src="js/attack.js" defer></script>
   </head>
   <body>
     <div id="game-container">
       <section id="mainWindow"></section>
       <section id="village" class="map active">
         <div id="Hero"></div>
+        <div id="inventory" class="map-inventory">
+          <div class="inventory-container">
+            <h2>인벤토리</h2>
+            <ul id="inventory-items"></ul>
+          </div>
+        </div>
+        <div id="game-container">
+      <div id="Heroinfo">
+        <img class="photo" src="image/hero.png" alt="" />
+        <div class="infomation">
+          <h2 id="ninkname">이름:</h2>
+          <p id="gold">골드:</p>
+          <p id="HP">체력: 100/100</p>
+        </div>
+      </div>
         <div class="shop-Board">상점 입구</div>
         <div class="dungeon-Board">던전 입구</div>
         <div class="obstacleList">
@@ -104,11 +122,9 @@
         </div>
       </section>
       <section id="dungeon" class="map">
-        <!-- ✨ 몬스터에 data 속성 추가됨! -->
         <div
           class="monster"
           id="GreenMonster"
-          style="left: 50px; top: 300px"
           data-name="그린 슬라임"
           data-hp="100"
           data-max-hp="100"
@@ -185,6 +201,92 @@
         </div>
       </section>
       <section id="shop" class="map">
+        <div class="obstacleList">
+          <div
+            class="obstacle house1"
+            style="
+              left: 375px;
+              top: 415px;
+              width: 10px;
+              height: 70px;
+              transform: rotate(-60deg);
+            "
+          ></div>
+          <div
+            class="obstacle house1"
+            style="
+              left: 440px;
+              top: 390px;
+              width: 10px;
+              height: 95px;
+              transform: rotate(60deg);
+            "
+          ></div>
+          <div
+            class="obstacle house1"
+            style="
+              left: 390px;
+              top: 365px;
+              width: 10px;
+              height: 95px;
+              transform: rotate(60deg);
+            "
+          ></div>
+          <div
+            class="obstacle house1"
+            style="
+              left: 450px;
+              top: 375px;
+              width: 10px;
+              height: 60px;
+              transform: rotate(-60deg);
+            "
+          ></div>
+          <div
+            class="obstacle house1"
+            style="left: 280px; top: 300px; width: 80px; height: 110px"
+          ></div>
+          <div
+            class="obstacle house1"
+            style="
+              left: 180px;
+              top: 40px;
+              width: 150px;
+              height: 500px;
+              transform: rotate(60deg);
+            "
+          ></div>
+          <div
+            class="obstacle house1"
+            style="
+              left: 470px;
+              top: 20px;
+              width: 150px;
+              height: 500px;
+              transform: rotate(-60deg);
+            "
+          ></div>
+          <div
+            class="obstacle house1"
+            style="
+              left: 580px;
+              top: 350px;
+              width: 30px;
+              height: 400px;
+              transform: rotate(-120deg);
+            "
+          ></div>
+          <div
+            class="obstacle house1"
+            style="
+              left: 200px;
+              top: 370px;
+              width: 30px;
+              height: 400px;
+              transform: rotate(-240deg);
+            "
+          ></div>
+        </div>
         <div id="owner"></div>
         <div id="shopinven">
           <h2 class="title">
@@ -197,44 +299,20 @@
           <h2 class="alarm">알림</h2>
           <p>체력 물약(10G)을 구매하시겠습니까?</p>
           <div class="yesORno">
-            <button id="yes">[ 예 ]</button>
-            <button id="no">[ 아니오 ]</button>
+            <p id="potionYes">[ 예 ]</p>
+            <p id="potionNo">[ 아니오 ]</p>
           </div>
         </div>
-      </section>
-      <section id="battle" class="map">
-        <div class="battle-container">
-          <div class="battle-monster">
-            <div class="monster-image"></div>
-            <div class="monster-info">
-              <h2 class="monster-name">몬스터 이름</h2>
-              <div class="hp-bar">
-                <div class="hp-fill"></div>
-              </div>
-              <p class="hp-text">HP: 100/100</p>
-            </div>
-          </div>
-          <div class="battle-hero">
-            <div class="hero-info">
-              <h2>나의 상태</h2>
-              <div class="hp-bar">
-                <div class="hp-fill"></div>
-              </div>
-              <p class="hp-text">HP: 150/150</p>
-            </div>
-          </div>
-          <div class="battle-actions">
-            <button id="btn-attack">⚔️ 공격</button>
-            <button id="btn-defend">🛡️ 방어</button>
-            <button id="btn-item">💊 아이템</button>
-            <button id="btn-run">🏃 도망</button>
-          </div>
-          <div class="battle-log">
-            <p>전투가 시작되었습니다!</p>
+        <div id="swordinfo">
+          <h2 class="alarm">알림</h2>
+          <p>철검(50G)을 구매하시겠습니까?</p>
+          <div class="yesORno">
+            <p id="swordYes">[ 예 ]</p>
+            <p id="swordNo">[ 아니오 ]</p>
           </div>
         </div>
       </section>
     </div>
   </body>
 </html>
-+
+
